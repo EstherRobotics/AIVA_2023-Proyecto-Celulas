@@ -4,7 +4,7 @@ from imagenCelula import *
 from interfaz import *
 
 
-# Tests unitarios
+# Tests unitarios  definidos en la clase testCelulas
 ##############################################################
 class testCelulas(unittest.TestCase):
     def setUp(self):

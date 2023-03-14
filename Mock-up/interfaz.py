@@ -1,4 +1,6 @@
 
+
+
 # Clase para mostrar la información procesada en una interfaz
 ##############################################################
 class Interfaz:

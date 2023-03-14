@@ -1,4 +1,6 @@
 
+
+
 # Clase para el procesamiento y detección de células en la imagen
 ##############################################################
 class ImagenCelula:
