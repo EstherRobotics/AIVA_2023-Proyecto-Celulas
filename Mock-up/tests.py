@@ -8,7 +8,7 @@ from interface import *
 ##############################################################
 class testCells(unittest.TestCase):
     def setUp(self):
-        """Carga una instancia de ImagenCelula, con una imagen y un modelo determinado"""
+        """Carga una instancia de ImageCell, con una imagen y un modelo determinado"""
         self.cell1 = ImageCell("./imagen.jpg", "./modelo.sav")
 
     def test_loadImage(self):
