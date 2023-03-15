@@ -25,10 +25,13 @@ Para abordar este problema se pretende utilizar técnicas robustas de deep learn
 
 Para un mayor entendimiento de este proyecto la aplicación recibirá una imagen de microscopía en color como la siguiente: 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/46898686/225309474-a1989b4f-5393-4303-9fd0-03c5c3c1fd35.png">
+<img src="https://user-images.githubusercontent.com/46898686/225309474-a1989b4f-5393-4303-9fd0-03c5c3c1fd35.png" width="50%" height="50%">
 </p>
 Tras realizar la detección de células, la aplicación CellCountApp devolverá la imagen procesada con la posición de cada una de las células a partir de la utilización de bounding boxes como se muestra en la siguiente imagen:
-![image](https://user-images.githubusercontent.com/46898686/225309987-9d719387-2e36-418b-bc1b-7fe2e3083437.png)
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/46898686/225309987-9d719387-2e36-418b-bc1b-7fe2e3083437.png">
+</p>
 
 Además, como se ha dicho anteriormente, se proporcionará el número total de células encontradas a partir del conteo de los bounding boxes.
 
