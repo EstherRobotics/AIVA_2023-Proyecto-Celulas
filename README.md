@@ -1,5 +1,17 @@
 # AIVA_2023-Proyecto-Celulas
 
+##Índice
+
+*[Introducción](#introducción)
+
+*[Descripción del proyecto](#descripción-del-proyecto)
+
+*[Archivos del proyecto](#archivos-del-proyecto)
+
+*[Conclusión](#conclusión)
+
+# Headline H1
+
 El objetivo de este proyecto es crear una aplicación que sea capaz de detectar y contar células al introducir una imagen de microscopía. En adelante, se denominará a dicha aplicación con el nombre de CellCountApp. CellCountApp estará diseñada principalmente para el conteo de células al enviar una imagen de microscopio, pero además será capaz de localizar cada una de las células con bounding box. Cabe añadir que podrá utilizarse con cualquier clase de célula, lo que implica que deberá reconocer distintos tipos de las mismas, así como una posible superposición entre ellas.
 
 En cuanto a la estructura del proyecto, la finalidad es desarrollar una aplicación (tipo interfaz gráfica) en Python con una arquitectura de cliente/servidor, de tal manera que el usuario pueda comunicarse con la aplicación creada. Es decir, que el cliente mande una imagen al servidor, este la procese, realice la detección de células y devuelva dicha imagen al cliente junto con el número de células encontradas.
