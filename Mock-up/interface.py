@@ -3,13 +3,13 @@
 
 # Clase para mostrar la información procesada en una interfaz
 ##############################################################
-class Interfaz:
+class Interface:
 
-    def subirImagen(self):
+    def uploadImage(self):
         """Opción para seleccionar la ruta de la imagen a procesar."""
 
-    def mostrarImagen(self, imagen_aux):
+    def showImage(self, image_aux):
         """Muestra la imagen proporcionada en la función."""
 
-    def mostrarTotalCelulas(self, totalCelulas):
+    def showTotalCells(self, totalCells):
         """Imprime el número total de células detectadas en la interfaz."""
