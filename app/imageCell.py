@@ -9,7 +9,7 @@ from utils.general import non_max_suppression
 # Clase para cargar el modelo entrenado y detectar, contar y mostrar células
 ##############################################################
 class ImageCell:
-    def __init__(self, path_image, path_model):
+    def __init__(self, path_image: str, path_model: str):
         self.path_image = path_image
         self.path_model = path_model
         self.boundingBox = []

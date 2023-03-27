@@ -12,7 +12,7 @@ import subprocess
 ##############################################################
 class trainCell:
 
-    def __init__(self, path_dataset):
+    def __init__(self, path_dataset: str):
         self.path_dataset = path_dataset
         self.path_model = ""
         self.imgs = []
@@ -40,7 +40,7 @@ class trainCell:
 
         print("El dataset se ha dividido en entrenamiento y validación")
 
-    def saveSplittedDataset(self, trainImgPath, trainLabelPath, valImgPath, valLabelPath):
+    def saveSplittedDataset(self, trainImgPath: str, trainLabelPath: str, valImgPath: str, valLabelPath: str):
         """Guarda las imágenes y anotaciones divididas en entrenamiento y validación en las carpetas correspondientes
         según el formato esperado por YOLO"""
 
@@ -68,7 +68,7 @@ class trainCell:
 
         print("Imágenes y anotaciones guardadas")
 
-    def trainModel(self, batch=4, epochs=1):
+    def trainModel(self, batch=4: int, epochs=1: int):
         """Entrena la red neuronal YOLO con el dataset configurado mediante la línea de comandos"""
         print("Entrenando red YOLO")
         #cmd = '!python yolov5/train.py --img 640 --batch 4 --epochs 5 --data dataset.yaml --weights yolov5s.pt --cache'
@@ -78,9 +78,7 @@ class trainCell:
         print(result.stdout)
         print("Entrenamiento terminado")
 
-
-
-    def saveModel(self, path_weight, path_save):
+    def saveModel(self, path_weight: str, path_save: str):
         """Carga el modelo de YOLO y los pesos entrenados y guarda el modelo completo"""
 
         model = torch.hub.load('ultralytics/yolov5', 'custom', path=path_weight, force_reload=True)

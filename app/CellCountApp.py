@@ -14,94 +14,95 @@ from imageCell import *
 ##############################################################
 class CellCountApp:
     def __init__(self):
-        # Creación de la ventana principal
-        self.ventana = tk.Tk()
-        self.ventana.title("CellCountApp")
-        self.ventana.geometry("900x600")
+        # Creación de la window principal
+        self.window = tk.Tk()
+        self.window.title("CellCountApp")
+        self.window.geometry("900x600")
 
         # Se agrega un botón para cargar la imagen
-        self.boton_cargar = tk.Button(self.ventana, text="Cargar imagen", command=self.loadImage)
-        self.boton_cargar.pack()
-        
+        self.loadButton = tk.Button(self.window, text="Cargar imagen", command=self.selectAndProcessImage)
+        self.loadButton.pack()
+
         # Se agrega un botón para cerrar la imagen
-        self.boton_cerrar = tk.Button(self.ventana, text="Cerrar imagen", command=self.closeImage)
-        self.boton_cerrar.pack()
-        self.boton_cerrar.config(state='disabled') # Deshabilita el botón hasta que se cargue una imagen
+        self.closeButton = tk.Button(self.window, text="Cerrar imagen", command=self.closeProcessedImage)
+        self.closeButton.pack()
+        self.closeButton.config(state='disabled') # Deshabilita el botón hasta que se cargue una imagen
 
         # Se agrega una etiqueta para mostrar el conteo de células
-        self.count = tk.Label(self.ventana)
+        self.count = tk.Label(self.window)
 
         # Agrega un panel para mostrar la imagen
-        self.panel_imagen = tk.Label(self.ventana)
+        self.panelImage = tk.Label(self.window)
 
         # Agrega un panel para mostrar la imagen predicha
-        self.panel_imagen_predicha = tk.Label(self.ventana)
+        self.panelImagePred = tk.Label(self.window)
 
         # Inicia el bucle principal de la aplicación
-        self.ventana.mainloop()
+        self.window.mainloop()
 
-    def loadImage(self):
+    def selectAndProcessImage(self):
         """Abre el directorio del usuario para que seleccione la imagen a procesar
         y muestra las detecciones de las células"""
 
-        ruta_imagen = filedialog.askopenfilename()
-        if ruta_imagen:
+        path_image = filedialog.askopenfilename()
+        if path_image:
             # Oculta la imagen anterior y la etiqueta de conteo
             self.count.pack_forget()
-            self.panel_imagen.pack_forget()
-            self.panel_imagen_predicha.pack_forget()
+            self.panelImage.pack_forget()
+            self.panelImagePred.pack_forget()
 
             # Carga la nueva imagen y la muestra
-            imagen_pil = Image.open(ruta_imagen)
-            imagen_pil = imagen_pil.resize((224, 224)) #Hacemos resize porque sino la interfaz corta ambas imágenes
-            imagen_np = tf.keras.preprocessing.image.img_to_array(imagen_pil)
+            image_pil = Image.open(path_image)
+            image_pil = image_pil.resize((224, 224)) #Hacemos resize porque sino la interfaz corta ambas imágenes
+            image_np = tf.keras.preprocessing.image.img_to_array(image_pil)
 
-            imagen_mostrada = ImageTk.PhotoImage(imagen_pil)
+            imagen_mostrada = ImageTk.PhotoImage(image_pil)
             
-            self.panel_imagen.config(image=imagen_mostrada)
-            self.panel_imagen.image = imagen_mostrada
+            self.panelImage.config(image=imagen_mostrada)
+            self.panelImage.image = imagen_mostrada
 
             # Muestra la nueva imagen y la etiqueta de conteo
             self.count.pack()
-            self.panel_imagen.pack()
+            self.panelImage.pack()
 
             # Detección de células en la imagen con la clase ImageCell
-            self.detectCells = ImageCell(ruta_imagen,'yolov5s_cells.onnx')
+            self.detectCells = ImageCell(path_image,'yolov5s_cells.onnx')
             self.detectCells.loadImage()
             self.detectCells.prepareImage()
             self.detectCells.loadModel()
-            self.detectCells.detectCells()
+            out = self.detectCells.detectCells()
+            print(type(out))
 
             totalCells = self.detectCells.countCells()
-            imagen_predicha = self.detectCells.drawBoundingBox()
+            img_pred = self.detectCells.drawBoundingBox()
 
             # Mostrar total de células detectadas 
             self.count.config(text="El número de células detectadas: " + str(totalCells))
 
             # Mostrar imagen con bounding boxes
-            imagen_predicha = cv2.cvtColor(imagen_predicha, cv2.COLOR_BGR2RGB)
-            imagen_predicha = cv2.resize(imagen_predicha, (224,224))
-            imagen_predicha = Image.fromarray(imagen_predicha)
-            imagen_predicha_tk = ImageTk.PhotoImage(imagen_predicha)
+            img_pred = cv2.cvtColor(img_pred, cv2.COLOR_BGR2RGB)
+            img_pred = cv2.resize(img_pred, (224,224))
+            img_pred = Image.fromarray(img_pred)
+            img_pred_tk = ImageTk.PhotoImage(img_pred)
 
-            self.panel_imagen_predicha.config(image=imagen_predicha_tk)
-            self.panel_imagen_predicha.image = imagen_predicha_tk
-            self.panel_imagen_predicha.pack()
+            self.panelImagePred.config(image=img_pred_tk)
+            self.panelImagePred.image = img_pred_tk
+            self.panelImagePred.pack()
 
             # Botón para cerrar la imagen
-            self.boton_cerrar.config(state='normal')
+            self.closeButton.config(state='normal')
 
-    def closeImage(self):
+    def closeProcessedImage(self):
         """Cierra las imágenes mostradas actualmente en la interfaz y habilita el botón para cargar otra imagen"""
         # Oculta la imagen y la etiqueta de conteo
         self.count.pack_forget()
-        self.panel_imagen.pack_forget()
-        self.panel_imagen_predicha.pack_forget()
+        self.panelImage.pack_forget()
+        self.panelImagePred.pack_forget()
         
         # Habilita el botón para cargar otra imagen
-        self.boton_cargar.config(state='normal')
+        self.loadButton.config(state='normal')
 
         # Deshabilita el botón para cerrar la imagen
-        self.boton_cerrar.config(state='disabled')
+        self.closeButton.config(state='disabled')
 
 CellCountApp()
