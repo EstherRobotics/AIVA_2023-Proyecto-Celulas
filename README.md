@@ -6,6 +6,8 @@
 
 *[Estructura del proyecto](#estructura-del-proyecto)
 
+*[Tutorial de ejecución](#tutorial-ejecución)
+
 *[Descripción detallada](#descripción-detallada)
 
 *[Conclusión](#conclusión)
@@ -27,6 +29,25 @@ La estructura actual se divide en tres carpetas aunque posteriormente será ampl
 * Mock-up
 
 En Dataset se encuentran las imágenes de células y las anotaciones de las posiciones de las células. En la sección de Docs, se encuentra el documento DSR y el presupuesto y finalmente en el Mock-up, se halla un esquema general de programación de la aplicación con los test unitarios. 
+
+## Tutorial de ejecución
+En esta parte se explican los pasos necesarios para poder poner en marcha cada uno de los códigos desarrollados para el entrenamiento y la detección de células en las imágenes. 
+
+# Restructuración del dataset 
+Para poder entrenar la red neuronal, primero se necesita configurar las carpetas y anotaciones de las imágenes de la manera esperada por YOLO. 
+
+# Instalación del repositorio de YOLOv5
+Este paso solo es necesario si se desea entrenar un modelo de YOLOv5. Dentro del directorio de /Code/trainingCell, se debe clonar el repositorio de YOLO con el comando: 
+
+
+# Entrenamiento de YOLOv5
+
+
+
+# Ejecución de la aplicación
+
+
+
 
 
 ## Descripción detallada
