@@ -3,22 +3,13 @@ import torch
 import glob
 import os
 import shutil
-
-#from IPython.display import Image
 from sklearn.model_selection import train_test_split
 import subprocess
 
-import onnxruntime
-import cv2
-import numpy as np
-from utils.general import non_max_suppression
 
 
 
-
-
-
-# Clase para el procesamiento y detección de células en la imagen
+# Clase para el entrenamiento de YOLO para detectar células en la imagen
 ##############################################################
 class trainCell:
 
@@ -100,6 +91,7 @@ class trainCell:
 
         # Exportar modelo en formato ONNX
         torch.onnx.export(model, dummy_input, "yolov5s_cells.onnx", opset_version=12)
+
 
 
 
