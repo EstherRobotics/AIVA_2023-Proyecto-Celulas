@@ -33,18 +33,18 @@ En Dataset se encuentran las imágenes de células y las anotaciones de las posi
 ## Tutorial de ejecución
 En esta parte se explican los pasos necesarios para poder poner en marcha cada uno de los códigos desarrollados para el entrenamiento y la detección de células en las imágenes. 
 
-# Restructuración del dataset 
+### Restructuración del dataset 
 Para poder entrenar la red neuronal, primero se necesita configurar las carpetas y anotaciones de las imágenes de la manera esperada por YOLO. 
 
-# Instalación del repositorio de YOLOv5
+### Instalación del repositorio de YOLOv5
 Este paso solo es necesario si se desea entrenar un modelo de YOLOv5. Dentro del directorio de /Code/trainingCell, se debe clonar el repositorio de YOLO con el comando: 
 
 
-# Entrenamiento de YOLOv5
+### Entrenamiento de YOLOv5
 
 
 
-# Ejecución de la aplicación
+### Ejecución de la aplicación
 
 
 
