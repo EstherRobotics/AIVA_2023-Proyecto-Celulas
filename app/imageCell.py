@@ -9,7 +9,6 @@ from utils.general import non_max_suppression
 # Clase para cargar el modelo entrenado y detectar, contar y mostrar células
 ##############################################################
 class ImageCell:
-
     def __init__(self, path_image, path_model):
         self.path_image = path_image
         self.path_model = path_model
@@ -93,8 +92,8 @@ class ImageCell:
         return self.imageBoundingBox
 
 
-
-# Directorios para cargar imagen y modelo yolo
+# Ejemplo de prueba
+'''# Directorios para cargar imagen y modelo yolo
 path_image = 'a.jpg'
 path_model = 'yolov5s_cells.onnx'
 
@@ -111,7 +110,7 @@ img_detection = imgCell.drawBoundingBox()
 cv2.imshow('Células detectadas', img_detection)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
+'''
 
 
 
