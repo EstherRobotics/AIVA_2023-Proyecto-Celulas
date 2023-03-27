@@ -1,0 +1,9 @@
+# train and val data
+train: C:\Users\Usuario\Desktop\....\dataset\images\train\
+val: C:\Users\Usuario\Desktop\....\dataset\images\val\
+
+# number of classes
+nc: 1
+
+# class names
+names: ['cell']
