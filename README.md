@@ -18,17 +18,30 @@ Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para l
 
 
 ## Estructura del proyecto
-La estructura actual se divide en tres carpetas aunque posteriormente será ampliado al desarrollar el código de la aplicación: 
+La estructura actual se divide varias carpetas, donde se destacan sus directorios principales: 
 
+* Code
+  * trainingCell
 * Dataset
   * Annotations
   * JPEGImages 
+* Dataset preprocessing 
+  * annotations_YOLO
+  * xml_preprocessing
 * Docs
   * DSR_Células
+  * Documento_diseño_células 
   * Presupuesto
 * Mock-up
+* Tests
+  * tests
+  * run_tests
+* App
+  * CellCountApp
+  * imageCell
+  
 
-En Dataset se encuentran las imágenes de células y las anotaciones de las posiciones de las células. En la sección de Docs, se encuentra el documento DSR y el presupuesto y finalmente en el Mock-up, se halla un esquema general de programación de la aplicación con los test unitarios. 
+En el directorio de **Code** se encuentra *trainingCell*, que incluye los archivos necesarios utilizados en el entrenamiento de la red neuronal para la detección de células. En la carpeta de **Dataset**, están contenidas las imágenes de células y las anotaciones de sus posiciones proporcionadas inicialmente. El procesamiento de este **Dataset**, fue realizado en **Dataset_preprocessing**, donde se extrayeron las anotaciones de las imágenes en el formato requerido por YOLO. En la sección de **Docs**, podemos ver el documento DSR, el de presupuesto y el nuevo documento de diseño. Dentro del **Mock-up**, está un esquema general de programación de la aplicación con los test unitarios desarrollados inicialmente. Los nuevos tests unitarios están dentro de **Tests**, en el archivo *tests.py*, y pueden ejecutarse con run_tests.py para comprobar su funcionamiento. Finalmente, en el directorio **App**, se puede ver el código de la aplicación contenido en *CellCountApp.py*, que utiliza funciones de *imageCell.py* para el procesamiento. 
 
 ## Tutorial de ejecución
 En esta parte se explican los pasos necesarios para poder poner en marcha cada uno de los códigos desarrollados para el entrenamiento y la detección de células en las imágenes. 
