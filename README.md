@@ -47,17 +47,19 @@ En el directorio de **Code** se encuentra *trainingCell*, que incluye los archiv
 En esta parte se explican los pasos necesarios para poder poner en marcha cada uno de los códigos desarrollados para el entrenamiento y la detección de células en las imágenes. Si se desea únicamente probar la aplicación puede ir directamente a la sección *Ejecución de la aplicación*. 
 
 ### Restructuración del dataset 
-Para poder entrenar la red neuronal, primero se necesita configurar las carpetas y anotaciones de las imágenes de la manera esperada por YOLO. Esto ya ha sido realizado gracias al código contenido en **Dataset preprocessing**. Este código obtiene los XML que definen los *bounding boxes* de cada imagen reescalada y normalizada para poder utilizarlos en el entrenamiento de YOLOv5. Estos se guardan en la carpeta *annotations_YOLO*. 
+Para poder entrenar la red neuronal, primero se necesita configurar las carpetas y anotaciones de las imágenes de la manera esperada por YOLO. Esto ya ha sido realizado con el código contenido en **Dataset preprocessing**. Este código obtiene los XML que definen los *bounding boxes* de cada imagen reescalada y normalizada para poder utilizarlos en el entrenamiento de YOLOv5. Estos se guardan en la carpeta *annotations_YOLO*. 
 
-### Instalación del repositorio de YOLOv5
+A continuación, se han copiado los archivos de esta carpeta a Code/trainingCell/Data, así como las imágenes correspondientes a los txt. Ejecutando las funciones de *trainCell.py*: *loadDataset()*, *splitDataset()* y *saveSplittedDataset()*, se reordenan las imágenes y anotaciones dentro de la carpeta *Code/trainingCell/dataset/*, en carpetas de entrenamiento y validación. 
+
+
+### Entrenamiento de YOLOv5
 Si se desease volver a entrenar el modelo de YOLOv5 con las imágenes y anotaciones de las células se debe instalar el repositorio de YOLOv5. Dentro del directorio de /Code/trainingCell, se ejecuta el siguiente comando: 
 
 <code>git clone https://github.com/ultralytics/yolov5</code>
 
+Después, se debe crear un entorno virtual utilizando el archivo *requirements.txt* proporcionado. Ya con el dataset organizado dentro de la carpeta trainingCell según el paso anterior, se copia el archivo *dataset.yaml* dentro de la carpeta *trainingCell/yolov5/data* y se comprueba que las rutas contenidas en el sean las adecuadas según nuestro ordenador. 
 
-### Entrenamiento de YOLOv5
-Si se desea entrenar la red YOLOv5 con las imágenes de células y anotaciones, 
-
+Finalmente, ya se puede ejecutar la función *trainModel()* de *trainCell.py* que ejecuta el entrenamiento de YOLOv5 con las imágenes y anotaciones de las células. Se pueden modificar el tamaño de los *batches* y las épocas en esta función. Al final de la ejecución, se obtendrá el peso de la red entrenada dentro de la carpeta de *yolov5/runs/train/expX/weights*. Para guardar este peso como una red, se selecciona el archivo *best.pt* de la carpeta anterior y dentro del directorio *trainingCells*, se ejecuta la función *saveModel()* con las rutas correspondientes para guardar la red neuronal completa.  
 
 
 ### Ejecución de la aplicación
