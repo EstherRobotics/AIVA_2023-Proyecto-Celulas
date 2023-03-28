@@ -8,7 +8,7 @@
 
 3. [Descripción detallada](#descripción-detallada)
 
-4. [Tutorial de ejecución](#tutorial-ejecución)
+4. [Tutorial de ejecución](#tutorial-de-ejecución)
 
 5. [Conclusión](#conclusión)
 
