@@ -66,12 +66,11 @@ class CellCountApp:
             self.panelImage.pack()
 
             # Detección de células en la imagen con la clase ImageCell
-            self.detectCells = ImageCell(path_image,'yolov5s_cells.onnx')
+            self.detectCells = ImageCell(path_image,'yolov5s_cells1.onnx')
             self.detectCells.loadImage()
             self.detectCells.prepareImage()
             self.detectCells.loadModel()
             out = self.detectCells.detectCells()
-            print(type(out))
 
             totalCells = self.detectCells.countCells()
             img_pred = self.detectCells.drawBoundingBox()

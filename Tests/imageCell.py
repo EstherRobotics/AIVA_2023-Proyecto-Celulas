@@ -23,7 +23,7 @@ class ImageCell:
         """Abre la imagen de la ruta proporcionada por el usuario y guarda una copia"""
         self.image = cv2.imread(self.path_image)
         self.imageBoundingBox = self.image.copy()
-        print("Imagen cargada")
+        #print("Imagen cargada")
         return self.image
 
     def prepareImage(self):
@@ -32,13 +32,13 @@ class ImageCell:
         self.image = cv2.resize(self.image, (640, 640))
         self.image = np.transpose(self.image, [2, 0, 1])
         self.image = np.expand_dims(self.image, axis=0).astype(np.float32) / 255.0
-        print("Imagen procesada para poder realizar la inferencia")
+        #print("Imagen procesada para poder realizar la inferencia")
         return self.image
 
     def loadModel(self):
         """Carga el modelo ONNX para el procesamiento y lo ejecuta con onnxruntime"""
         self.session = onnxruntime.InferenceSession(self.path_model)
-        print("Sesión de inferencia a realizar por el modelo ", self.path_model, " cargado")
+        #print("Sesión de inferencia a realizar por el modelo ", self.path_model, " cargado")
         return self.session
 
     def detectCells(self):
@@ -46,15 +46,15 @@ class ImageCell:
         array de los bounding boxes donde se detectan células, la clase
         a la que pertenecen y el score"""
 
-        print("Detectando células de la imagen ", self.path_image, " con el modelo ", self.path_model)
+        #print("Detectando células de la imagen ", self.path_image, " con el modelo ", self.path_model)
 
         input_name = self.session.get_inputs()[0].name
         output_name = self.session.get_outputs()[0].name
         result = self.session.run([output_name], {input_name: self.image})
 
         output = torch.from_numpy(np.array(result[0]))
-        self.out = non_max_suppression(output, conf_thres=0.7, iou_thres=0.5)
-        print("Detección terminada")
+        self.out = non_max_suppression(output, conf_thres=0.5, iou_thres=0.5)
+        #print("Detección terminada")
 
         return self.out
 
@@ -68,7 +68,7 @@ class ImageCell:
         """Dibuja los bounding boxes obtenidos del procesamiento de la imagen
         con el modelo para poder visualizar las células detectadas."""
 
-        print("Dibujando bounding boxes sobre la imagen")
+        #print("Dibujando bounding boxes sobre la imagen")
         for i, (x0, y0, x1, y1, score, cls_id) in enumerate(self.out[0]):
             # Reescalar bounding boxes
             y0 = 480 * y0 / 640
@@ -88,14 +88,14 @@ class ImageCell:
                         thickness=2)
             cv2.rectangle(self.imageBoundingBox, box[:2], box[2:], (0, 255, 0), 2)
 
-        print("Bounding boxes dibujados sobre la imagen")
+        #print("Bounding boxes dibujados sobre la imagen")
         return self.imageBoundingBox
 
 
 # Ejemplo de prueba
 '''# Directorios para cargar imagen y modelo yolo
 path_image = 'a.jpg'
-path_model = 'yolov5s_cells.onnx'
+path_model = 'yolov5s_cells1.onnx'
 
 # Crear instancia de ImageCell
 imgCell = ImageCell(path_image, path_model)

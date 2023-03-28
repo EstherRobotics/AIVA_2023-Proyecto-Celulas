@@ -53,7 +53,7 @@ class ImageCell:
         result = self.session.run([output_name], {input_name: self.image})
 
         output = torch.from_numpy(np.array(result[0]))
-        self.out = non_max_suppression(output, conf_thres=0.7, iou_thres=0.5)
+        self.out = non_max_suppression(output, conf_thres=0.5, iou_thres=0.5)
         print("Detección terminada")
 
         return self.out

@@ -68,7 +68,7 @@ class trainCell:
 
         print("Imágenes y anotaciones guardadas")
 
-    def trainModel(self, batch=4: int, epochs=1: int):
+    def trainModel(self, batch: int, epochs: int):
         """Entrena la red neuronal YOLO con el dataset configurado mediante la línea de comandos"""
         print("Entrenando red YOLO")
         #cmd = '!python yolov5/train.py --img 640 --batch 4 --epochs 5 --data dataset.yaml --weights yolov5s.pt --cache'
@@ -88,7 +88,7 @@ class trainCell:
         dummy_input = torch.randn(1, *input_size)
 
         # Exportar modelo en formato ONNX
-        torch.onnx.export(model, dummy_input, "yolov5s_cells.onnx", opset_version=12)
+        torch.onnx.export(model, dummy_input, path_save, opset_version=12)
 
         print("Los pesos ", path_weight, " han sido guardados dentro del modelo ", path_save)
 
@@ -107,7 +107,7 @@ valLabelPath = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\t
 path_weight = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\trainingCell\\best.pt'
 
 # Nombre para guardar el modelo completo entrenado
-path_save = "yolov5s_cells.onnx"
+path_save = "yolov5s_cells1.onnx"
 
 # Directorio donde se encuentran las imágenes y las anotaciones mezcladas
 path_dataset = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\trainingCell\\data\\'
