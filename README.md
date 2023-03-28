@@ -28,6 +28,7 @@ La estructura actual se divide varias carpetas, donde se destacan sus directorio
 * Dataset preprocessing 
   * annotations_YOLO
   * xml_preprocessing
+*Diagrams 
 * Docs
   * DSR_Células
   * Documento_diseño_células 
@@ -38,21 +39,20 @@ La estructura actual se divide varias carpetas, donde se destacan sus directorio
   * run_tests
 * App
   * CellCountApp
-  * imageCell
-  
+  * imageCell  
 
-En el directorio de **Code** se encuentra *trainingCell*, que incluye los archivos necesarios utilizados en el entrenamiento de la red neuronal para la detección de células. En la carpeta de **Dataset**, están contenidas las imágenes de células y las anotaciones de sus posiciones proporcionadas inicialmente. El procesamiento de este **Dataset**, fue realizado en **Dataset_preprocessing**, donde se extrayeron las anotaciones de las imágenes en el formato requerido por YOLO. En la sección de **Docs**, podemos ver el documento DSR, el de presupuesto y el nuevo documento de diseño. Dentro del **Mock-up**, está un esquema general de programación de la aplicación con los test unitarios desarrollados inicialmente. Los nuevos tests unitarios están dentro de **Tests**, en el archivo *tests.py*, y pueden ejecutarse con run_tests.py para comprobar su funcionamiento. Finalmente, en el directorio **App**, se puede ver el código de la aplicación contenido en *CellCountApp.py*, que utiliza funciones de *imageCell.py* para el procesamiento. 
+En el directorio de **Code** se encuentra *trainingCell*, que incluye los archivos necesarios utilizados en el entrenamiento de la red neuronal para la detección de células. En la carpeta de **Dataset**, están contenidas las imágenes de células y las anotaciones de sus posiciones proporcionadas inicialmente. El procesamiento de este **Dataset**, fue realizado en **Dataset_preprocessing**, donde se extrayeron las anotaciones de las imágenes en el formato requerido por YOLO. Por otra parte, en **Diagrams**, se pueden ver los diagramas de clases, secuencia y actividad. En la sección de **Docs** se guarda el documento DSR, el de presupuesto y el nuevo documento de diseño. Dentro del **Mock-up**, está un esquema general de programación de la aplicación con los test unitarios desarrollados inicialmente. Los nuevos tests unitarios están dentro de **Tests**, en el archivo *tests.py*, y pueden ejecutarse con run_tests.py para comprobar su funcionamiento. Finalmente, en el directorio **App**, se puede ver el código de la aplicación contenido en *CellCountApp.py*, que utiliza funciones de *imageCell.py* para el procesamiento. 
 
 
 ## Descripción detallada
 
-**CellCountApp** estará diseñada principalmente para el conteo de células al enviar una imagen de microscopio y poder obtener su posición mediante la definición de zonas rectangulares. Se puede ver un ejemplo del tipo de imágenes a tratar a continuación: 
+**CellCountApp** está diseñada principalmente para poder detectar y contar el número de células de imágenes de microscopía. Esta detección se hace mediante el uso de la red neuronal YOLOv5 y obtiene las posiciones de las células mediante la mediante la definición de zonas rectangulares. Se puede ver un ejemplo del tipo de imágenes que se utilizan a continuación: 
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/46898686/225309474-a1989b4f-5393-4303-9fd0-03c5c3c1fd35.png" width="40%" height="40%">
 </p>
 
-Al procesar la información contenida en **Dataset/Annotations** sobre la imagen correspondiente, se pueden dibujar los bounding boxes asociados a cada célula: 
+Si se procesan la información contenida en **Dataset/Annotations** sobre la imagen correspondiente, se pueden dibujar los *bounding boxes* asociados a cada célula: 
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/46898686/225309987-9d719387-2e36-418b-bc1b-7fe2e3083437.png" width="40%" height="40%">
@@ -61,31 +61,34 @@ Al procesar la información contenida en **Dataset/Annotations** sobre la imagen
 
 Se puede observar que hay varios tipos de células y que además estas pueden encontrarse a lo largo de toda la imagen en orientaciones distintas. Se debe tener en cuenta que pueden ocurrir superposiciones entre las células por lo que este será un tema clave a la hora de realizar la detección. 
 
-Para el desarrollo del proyecto se programarán distintos modelos de **YOLO** que serán evaluados con métricas IoU. Estos modelos, procesarán la imagen, obteniendo la localización de las células esperada. En el caso de la interfaz final de **CellCountApp**, esta será programada con **Tkinker**. El usuario podrá cargar la imagen a procesar y se mostrará la información del procesamiento de forma visual, otorgando también el número total de células detectadas. 
+Para el desarrollo del proyecto se entrenará la red neuronal YOLOv5 con distintos parámetros, eligiendo aquella que ofrezca mejores resultados de detección. En la entrega actual, se ha entrenado una versión básica de esta red y el modelo completo se encuentra guardado en el archivo *yolov5s_cells1.onnx*. Siguiendo el tutorial descrito abajo, se puede ejecutar la aplicación y ver el procesamiento de forma visual, así como el número total de células detectadas. 
 
+Por otra parte, como ya se ha visto en la estructura del proyecto, se han desarrollado los diagramas UML de clases, secuencias y actividad, que muestran un esquema sobre el funcionamiento de las clases programadas. Estos diagramas, así como los tests unitarios realizados, han sido descritos con más detalles el documentos de diseño. 
 
 
 ## Tutorial de ejecución
-En esta parte se explican los pasos necesarios para poder poner en marcha cada uno de los códigos desarrollados para el entrenamiento y la detección de células en las imágenes. Si se desea únicamente probar la aplicación puede ir directamente a la sección *Ejecución de la aplicación*. 
+En esta parte se explican los pasos necesarios para poder poner en marcha cada uno de los códigos desarrollados para el entrenamiento y la detección de células en las imágenes. Algunos de ellos ya han sido ejecutados, como la parte de reestructuración del dataset o el entrenamiento, por lo que no es necesario volver a procesarlos. Si se desea únicamente probar la aplicación o los tests se puede ir directamente a la sección *Ejecución de la aplicación* y *Ejecución de los tests unitarios*. 
+
+Para poder utilizar cualquiera de los códigos, se debe hacer una instalación previa de un entorno virtual utilizando la lista de dependencias *requirements.txt*.
 
 ### Restructuración del dataset 
-Para poder entrenar la red neuronal, primero se necesita configurar las carpetas y anotaciones de las imágenes de la manera esperada por YOLO. Esto ya ha sido realizado con el código contenido en **Dataset preprocessing**. Este código obtiene los XML que definen los *bounding boxes* de cada imagen reescalada y normalizada para poder utilizarlos en el entrenamiento de YOLOv5. Estos se guardan en la carpeta *annotations_YOLO*. 
+Para poder entrenar la red neuronal, primero se necesita configurar las carpetas y anotaciones de las imágenes de la manera esperada por YOLO. Esto ya ha sido realizado con el código contenido en **Dataset preprocessing**. Este código obtiene los XML que definen los *bounding boxes* de cada imagen reescalada y normalizada para poder utilizarlos en el entrenamiento de YOLOv5 y los guarda en la carpeta *annotations_YOLO*. 
 
-A continuación, se han copiado los archivos de esta carpeta a Code/trainingCell/Data, así como las imágenes correspondientes a los txt. Ejecutando las funciones de *trainCell.py*: *loadDataset()*, *splitDataset()* y *saveSplittedDataset()*, se reordenan las imágenes y anotaciones dentro de la carpeta *Code/trainingCell/dataset/*, en carpetas de entrenamiento y validación. 
+A continuación, se han copiado los archivos de esta carpeta a *Code/trainingCell/data*, así como las imágenes correspondientes a los TXT. Ejecutando las funciones de *trainCell.py*: *loadDataset()*, *splitDataset()* y *saveSplittedDataset()*, se reordenan las imágenes y anotaciones dentro de la carpeta *Code/trainingCell/dataset/*, en carpetas de entrenamiento y validación. En el repositorio actual, este desarrollo ya ha sido realizado, por lo que no sería necesario volver a ejecutar este procedimiento. 
 
 
 ### Entrenamiento de YOLOv5
-Si se desease volver a entrenar el modelo de YOLOv5 con las imágenes y anotaciones de las células se debe instalar el repositorio de YOLOv5. Dentro del directorio de /Code/trainingCell, se ejecuta el siguiente comando: 
+Si se desease volver a entrenar el modelo de YOLOv5 con las imágenes y anotaciones de las células se debe instalar el repositorio de YOLOv5. Dentro del directorio de */Code/trainingCell*, se ejecuta el siguiente comando: 
 
 <code>git clone https://github.com/ultralytics/yolov5</code>
 
-Después, se debe crear un entorno virtual utilizando el archivo *requirements.txt* proporcionado. Ya con el dataset organizado dentro de la carpeta trainingCell según el paso anterior, se copia el archivo *dataset.yaml* dentro de la carpeta *trainingCell/yolov5/data* y se comprueba que las rutas contenidas en el sean las adecuadas según nuestro ordenador. 
+Ya con el dataset organizado dentro de la carpeta *trainingCell* según el paso anterior, se copia el archivo *dataset.yaml* dentro de la carpeta *trainingCell/yolov5/data* y se comprueba que las rutas contenidas en él sean las adecuadas según nuestro ordenador. Se deberán actualizar si es necesario con las rutas donde se encuentra el *trainingCell/dataset*. 
 
-Finalmente, ya se puede ejecutar la función *trainModel()* de *trainCell.py* que ejecuta el entrenamiento de YOLOv5 con las imágenes y anotaciones de las células. Se pueden modificar el tamaño de los *batches* y las épocas en esta función. Al final de la ejecución, se obtendrá el peso de la red entrenada dentro de la carpeta de *yolov5/runs/train/expX/weights*. Para guardar este peso como una red, se selecciona el archivo *best.pt* de la carpeta anterior y dentro del directorio *trainingCells*, se ejecuta la función *saveModel()* con las rutas correspondientes para guardar la red neuronal completa.  
+Finalmente, ya se puede ejecutar la función *trainModel()* de *trainCell.py* que ejecuta el entrenamiento de YOLOv5 con las imágenes y anotaciones de las células. Se pueden modificar el tamaño de los *batches* y las épocas en esta función. Al final de la ejecución, se obtendrá el peso de la red entrenada dentro de la carpeta de *yolov5/runs/train/expX/weights*. Para guardar este peso como una red, se selecciona el archivo *best.pt* de la carpeta anterior y dentro del directorio *trainingCells*, se ejecuta la función *saveModel()* con las rutas correspondientes actualizadas (*path_save* y *path_weight*) para guardar la red neuronal completa.  
 
 
 ### Ejecución de la aplicación
-La ejecución de **CellCountApp** es realmente sencilla. Para ello, se debe crear un entorno virtual donde se añadan las dependencias adjuntadas dentro del archivo *requirements.txt*. A continuación, solo se deberá ejecutar el código *CellCountApp.py* que deberá abrir una ventana de **Tkinker** donde aparezcan los botones *Cargar imagen* y *Cerrar imagen*:
+La ejecución de **CellCountApp** es realmente sencilla. Dentro del entorno virtual, se deberá ejecutar el código *CellCountApp.py* contenido en *App* que abrirá una ventana de **Tkinker** donde aparecen los botones *Cargar imagen* y *Cerrar imagen* como en la siguiente imagen:
 
 
 <p align="center">
@@ -93,15 +96,16 @@ La ejecución de **CellCountApp** es realmente sencilla. Para ello, se debe crea
 </p>
 
 
-Al pulsar cargar imagen, se puede elegir cualquier imagen por ejemplo de la carpeta de validación contenida en *Code/trainingCell/dataset/images/val* y se mostrarán tanto la imagen sin procesar como la imagen con los *bounding boxes* predichos por la red neuronal *yolov5s_cells1.onnx*. Después se puede pulsar en el botón de cerrar para cargar una nueva imagen. 
+Al pulsar en *Cargar imagen*, se puede elegir cualquier imagen por ejemplo de la carpeta de validación contenida en *Code/trainingCell/dataset/images/val* y se mostrarán tanto la imagen sin procesar como la imagen con los *bounding boxes* predichos por la red neuronal *yolov5s_cells1.onnx*. Después se puede pulsar en el botón de cerrar para cargar una nueva imagen. 
 
 <p align="center">
-
 <img src="https://user-images.githubusercontent.com/93343403/228200340-0c8efc8c-9271-427e-a6b6-9ca114077f1a.png" width="40%" height="40%">
 </p>
+
+### Ejecución de los tests unitarios
+Para poder probar el funcionamiento de los tests, dentro de la carpeta **Tests** se debe ejecutar el código *run_tests.py*. En la línea de comandos se mostrará información sobre si los tests se han pasado con éxito o ha habido algún fallo en la ejecución. 
 
 
 # Conclusión 
 
-Cabe decir que este repositorio se encuentra bajo desarrollo por lo que actualmente, solo posee los documentos para el comienzo del proyecto, el conjunto de datos que se utilizará para el entrenamiento del modelo y el mock-up del sistema. 
-
+Cabe decir que este repositorio se encuentra bajo desarrollo por lo que actualmente, por lo que se mejorará la versión de la aplicación y el funcionamiento de la detección de células en posteriores versiones, así como los documentos asociados. 
