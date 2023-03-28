@@ -2,17 +2,19 @@
 
 ## Índice
 
-*[Introducción](#introducción)
+1. [Introducción](#introducción)
 
-*[Estructura del proyecto](#estructura-del-proyecto)
+2. [Estructura del proyecto](#estructura-del-proyecto)
 
-*[Descripción detallada](#descripción-detallada)
+3. [Descripción detallada](#descripción-detallada)
 
-*[Tutorial de ejecución](#tutorial-ejecución)
-  * [Restructuración del dataset](#Restructuración-dataset)
-
-
-*[Conclusión](#conclusión)
+4. [Tutorial de ejecución](#tutorial-ejecución)
+  4.1 [Restructuración del dataset](#Restructuración-dataset)
+  4.2 [Entrenamiento de YOLOv5](#Entrenamiento-yolov5)
+  4.3 [Ejecución de la aplicación](#Ejecución-aplicación)
+  4.4 [Ejecución de los tests unitarios](#Ejecución-tests)
+  
+5. [Conclusión](#conclusión)
 
 ## Introducción
 
