@@ -28,7 +28,7 @@ La estructura actual se divide varias carpetas, donde se destacan sus directorio
 * Dataset preprocessing 
   * annotations_YOLO
   * xml_preprocessing
-*Diagrams 
+* Diagrams 
 * Docs
   * DSR_Células
   * Documento_diseño_células 
