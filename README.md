@@ -14,7 +14,7 @@
 
 ## Introducción
 
-Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para la detección y conteo de células en imágenes de microscopía. En este respositorio se encuentran todos los documentos asociados al proyecto, tanto de los requerimientos del sistema como de la primera parte de su implementación. El objetivo final es desarrollar una interfaz capaz de obtener la localización de cada célula en la imagen mediante *bounding boxes*. 
+Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para la detección y conteo de células en imágenes de microscopía. En este respositorio se encuentran todos los documentos asociados al proyecto sobre los requerimientos funcionales y de diseño del sistema. Asimismo, se puede encontrar tanto el Mock-Up, como el Dataset utilizado y los códigos asociados para el enternamiento de la red neuronal de detección. En el directorio de App se puede ver una primera versión de la interfaz de la aplicación sencilla, capaz de obtener la localización y conteo de algunas células al cargar una imagen mediante *bounding boxes*. 
 
 
 ## Estructura del proyecto
@@ -58,6 +58,13 @@ Este paso solo es necesario si se desea entrenar un modelo de YOLOv5. Dentro del
 
 
 ### Ejecución de la aplicación
+La ejecución de **CellCountApp** es realmente sencilla. Para ello, se debe crear un entorno virtual donde se añadan las dependencias adjuntadas dentro del archivo *requirements.txt*. A continuación, solo se deberá ejecutar el código *CellCountApp.py* que deberá abrir una ventana de **Tkinker** donde aparezcan los botones *Cargar imagen* y *Cerrar imagen*:
+
+
+
+
+Al pulsar cargar imagen, se puede elegir cualquier imagen por ejemplo de la carpeta de validación contenida en *Code/trainingCell/dataset/images/val* y se mostrarán tanto la imagen sin procesar como la imagen con los *bounding boxes* predichos por la red neuronal *yolov5s_cells1.onnx*. Después se puede pulsar en el botón de cerrar para cargar una nueva imagen. 
+
 
 
 
