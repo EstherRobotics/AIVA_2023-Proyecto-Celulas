@@ -61,12 +61,17 @@ Este paso solo es necesario si se desea entrenar un modelo de YOLOv5. Dentro del
 La ejecución de **CellCountApp** es realmente sencilla. Para ello, se debe crear un entorno virtual donde se añadan las dependencias adjuntadas dentro del archivo *requirements.txt*. A continuación, solo se deberá ejecutar el código *CellCountApp.py* que deberá abrir una ventana de **Tkinker** donde aparezcan los botones *Cargar imagen* y *Cerrar imagen*:
 
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/93343403/228200416-95f98ff9-4917-4374-82d0-20fcbd0d2b13.png" width="40%" height="40%">
+</p>
 
 
 Al pulsar cargar imagen, se puede elegir cualquier imagen por ejemplo de la carpeta de validación contenida en *Code/trainingCell/dataset/images/val* y se mostrarán tanto la imagen sin procesar como la imagen con los *bounding boxes* predichos por la red neuronal *yolov5s_cells1.onnx*. Después se puede pulsar en el botón de cerrar para cargar una nueva imagen. 
 
+<p align="center">
 
-
+<img src="https://user-images.githubusercontent.com/93343403/228200340-0c8efc8c-9271-427e-a6b6-9ca114077f1a.png" width="40%" height="40%">
+</p>
 
 
 
