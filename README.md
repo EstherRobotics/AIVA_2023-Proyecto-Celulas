@@ -14,7 +14,7 @@
 
 ## Introducción
 
-Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para la detección y conteo de células en imágenes de microscopía. En este respositorio están todos los documentos asociados al proyecto sobre los requerimientos funcionales y de diseño del sistema. Asimismo, se puede encontrar tanto el Mock-Up, como el Dataset utilizado y los códigos asociados para el entrenamiento de la red neuronal de detección. En el directorio de **App** se puede ver una primera versión de la interfaz de la aplicación sencilla, capaz de obtener la localización y conteo de algunas células al cargar una imagen mediante *bounding boxes*. 
+Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para la detección y conteo de células en imágenes de microscopía. En este respositorio están todos los documentos asociados al proyecto sobre los requerimientos funcionales y de diseño del sistema. Asimismo, se puede encontrar tanto el Mock-Up, como el dataset utilizado y los códigos asociados para el entrenamiento de la red neuronal de detección. En el directorio de **App** se puede ver una primera versión de la interfaz de la aplicación sencilla, capaz de obtener la localización y conteo de algunas células al cargar una imagen mediante *bounding boxes*. 
 
 
 ## Estructura del proyecto
