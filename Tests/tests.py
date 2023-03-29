@@ -9,8 +9,8 @@ class testCells(unittest.TestCase):
     def setUp(self):
         """Carga una instancia de ImageCell, con una imagen y un modelo determinado"""
         #self.image = 'images_test/BloodImage_00022.jpg'
-        #self.image = 'images_test/BloodImage_00132.jpg'
-        self.image = 'images_test/BloodImage_00225.jpg'
+        self.image = 'images_test/BloodImage_00132.jpg'
+        #self.image = 'images_test/BloodImage_00225.jpg'
 
         self.cell1 = ImageCell(self.image, 'yolov5s_cells1.onnx')
 

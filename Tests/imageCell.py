@@ -61,7 +61,7 @@ class ImageCell:
     def countCells(self):
         """Cuenta el total de células detectadas según el número de bounding boxes obtenidos."""
         self.totalCells = len(self.out[0])
-        print("Total de células detectadas: ", self.totalCells)
+        #print("Total de células detectadas: ", self.totalCells)
         return self.totalCells
 
     def drawBoundingBox(self):
