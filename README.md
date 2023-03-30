@@ -14,7 +14,7 @@
 
 ## Introducción
 
-Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para la detección y conteo de células en imágenes de microscopía. En este respositorio están todos los documentos asociados al proyecto sobre los requerimientos funcionales y de diseño del sistema. Asimismo, se puede encontrar tanto el Mock-Up, como el dataset utilizado y los códigos asociados para el entrenamiento de la red neuronal de detección. En el directorio de **App** se puede ver una primera versión de la interfaz de la aplicación sencilla, capaz de obtener la localización y conteo de algunas células al cargar una imagen mediante *bounding boxes*. 
+Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para la detección y conteo de células en imágenes de microscopía. En este respositorio están todos los documentos asociados al proyecto sobre los requerimientos funcionales y de diseño del sistema. Asimismo, se puede encontrar tanto el Mock-Up, como el dataset utilizado y los códigos asociados para el entrenamiento de la red neuronal de detección. En el directorio de **App** se puede ver una primera versión de la interfaz de la aplicación, capaz de obtener la localización y conteo de algunas células al cargar una imagen mediante *bounding boxes*. 
 
 
 ## Estructura del proyecto
@@ -91,7 +91,7 @@ Finalmente, ya se puede ejecutar la función *trainModel()* de *trainCell.py* qu
 
 
 ### Ejecución de la aplicación
-La ejecución de **CellCountApp** es realmente sencilla. Dentro del entorno virtual, se deberá ejecutar el código *CellCountApp.py* contenido en *App* que abrirá una ventana de **Tkinker** donde aparecen los botones *Cargar imagen* y *Cerrar imagen* como en la siguiente imagen:
+La ejecución de **CellCountApp** es realmente sencilla. Dentro del entorno virtual, se deberá ejecutar el código *CellCountApp.py* contenido en **App** que abrirá una ventana de **Tkinker** donde aparecen los botones *Cargar imagen* y *Cerrar imagen* como en la siguiente imagen:
 
 
 <p align="center">
@@ -99,7 +99,7 @@ La ejecución de **CellCountApp** es realmente sencilla. Dentro del entorno virt
 </p>
 
 
-Al pulsar en *Cargar imagen*, se puede elegir cualquier imagen por ejemplo de la carpeta de validación contenida en *Code/trainingCell/dataset/images/val* y se mostrarán tanto la imagen sin procesar como la imagen con los *bounding boxes* predichos por la red neuronal *yolov5s_cells1.onnx*. Después se puede pulsar en el botón de cerrar para cargar una nueva imagen. 
+Al pulsar en *Cargar imagen*, se puede elegir cualquier imagen por ejemplo de la carpeta de validación contenida en *Code/trainingCell/dataset/images/val* y se mostrarán tanto la imagen sin procesar como la imagen con los *bounding boxes* predichos por la red neuronal *yolov5s_cells1.onnx*. Después, se puede pulsar en el botón de cerrar para cargar una nueva imagen. 
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/93343403/228200340-0c8efc8c-9271-427e-a6b6-9ca114077f1a.png" width="40%" height="40%">
