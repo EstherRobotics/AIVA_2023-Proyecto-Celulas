@@ -90,7 +90,8 @@ class CellCountApp:
             self.detectCells.loadImage()
             self.detectCells.prepareImage()
             self.detectCells.loadModel()
-
+            
+            #Se extrae el nivel de confianza elegido por el usuario
             conf_thresh = self.confThreshScale.get()
 
             out =  self.detectCells.detectCells(conf_thresh=conf_thresh)
