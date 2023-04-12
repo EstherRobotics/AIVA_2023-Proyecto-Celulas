@@ -37,9 +37,7 @@ class CellCountApp:
         self.closeButton.pack(pady=10)
         self.closeButton.config(state='disabled') # Deshabilita el botón hasta que se cargue una imagen
 
-        # Agrega una etiqueta para mostrar el conteo de células
         # Se agrega una etiqueta para mostrar el conteo de células
-        #self.count = tk.Label(self.window)
         self.count = tk.Label(self.window, font=('Times New Roman', 16, 'bold'),anchor="center",fg='white', bg='#4b86b4')
         self.count.pack(pady=20, fill=tk.X)
 
@@ -59,8 +57,6 @@ class CellCountApp:
         self.panelImagePred = tk.Label(self.panelImagePredContainer)
         self.panelImagePred.place(x=800, y=300)
 
-
-
         # Inicia el bucle principal de la aplicación
         self.window.mainloop()
 
@@ -74,11 +70,6 @@ class CellCountApp:
             self.count.pack_forget()
             self.panelImageOrig.pack_forget()
             self.panelImagePred.pack_forget()
-
-            #PONER EL PACKFORGET ELIMINA LAS IMÁGENES
-            #self.panelImageOrigContainer.pack_forget()
-            #self.panelImagePredContainer.pack_forget()
-
 
             # Carga la nueva imagen y la muestra
             image_pil = Image.open(path_image)
@@ -103,10 +94,6 @@ class CellCountApp:
 
             out =  self.detectCells.detectCells(conf_thresh=conf_thresh)
 
-            #conf_thresh = float(self.confThreshEntry.get())
-            #conf_thresh = float(self.conf_thresh_entry.get())
-
-
             totalCells = self.detectCells.countCells()
             img_pred = self.detectCells.drawBoundingBox()
 
@@ -114,6 +101,7 @@ class CellCountApp:
 
             self.count.config(text="Número de células detectadas: " + str(totalCells))
             self.count.pack(pady=20, fill=tk.X)
+
             # Mostrar imagen con bounding boxes
             img_pred = cv2.cvtColor(img_pred, cv2.COLOR_BGR2RGB)
             img_pred = cv2.resize(img_pred, (250,250))
@@ -135,10 +123,6 @@ class CellCountApp:
         self.count.pack_forget()
         self.panelImagePred.pack_forget()
         self.panelImageOrig.pack_forget()
-
-
-        # Vuelve a mostrar la imagen original
-        #self.panelImageOrig.pack(side=tk.LEFT, padx=10)
 
         # Deshabilita el botón para cerrar la imagen procesada
         self.closeButton.config(state='disabled')
