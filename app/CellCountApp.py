@@ -25,7 +25,7 @@ class CellCountApp:
 
         # Crear widget Scale para el conf_thresh
         self.confThreshScale = tk.Scale(self.window, from_=0, to=1, resolution=0.01, orient=tk.HORIZONTAL)
-        self.confThreshScale.set(0.5) # Valor por defecto
+        self.confThreshScale.set(0.5) # Valor por defecto de 0.5
         self.confThreshScale.pack()
 
         # Se agrega un botón para cargar la imagen
@@ -66,6 +66,7 @@ class CellCountApp:
 
         path_image = filedialog.askopenfilename()
         if path_image:
+            
             # Oculta la imagen anterior y la etiqueta de conteo
             self.count.pack_forget()
             self.panelImageOrig.pack_forget()
