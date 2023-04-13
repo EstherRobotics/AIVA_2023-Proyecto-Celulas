@@ -44,7 +44,8 @@ class ImageCell:
     def detectCells(self, conf_thresh : float):
         """Ejecuta el modelo entrenado sobre la imagen y devuelve un
         array de los bounding boxes donde se detectan células, la clase
-        a la que pertenecen y el score"""
+        a la que pertenecen y el score. Además, se le añade como argumento el intervalo 
+        de confianza elegido por el usuario"""
 
         print("Detectando células de la imagen ", self.path_image, " con el modelo ", self.path_model)
 
