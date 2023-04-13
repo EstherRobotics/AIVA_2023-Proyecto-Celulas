@@ -134,4 +134,5 @@ class CellCountApp:
         # Deshabilita el botón para cerrar la imagen procesada
         self.closeButton.config(state='disabled')
 
+#Ejecución de la aplicación
 CellCountApp()
