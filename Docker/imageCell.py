@@ -41,10 +41,11 @@ class ImageCell:
         print("Sesión de inferencia a realizar por el modelo ", self.path_model, " cargado")
         return self.session
 
-    def detectCells(self):
+    def detectCells(self, conf_thresh : float):
         """Ejecuta el modelo entrenado sobre la imagen y devuelve un
         array de los bounding boxes donde se detectan células, la clase
-        a la que pertenecen y el score"""
+        a la que pertenecen y el score. Se le añade como argumento el intervalo 
+        de confianza que será elegido por el usuario en la interfaz"""
 
         print("Detectando células de la imagen ", self.path_image, " con el modelo ", self.path_model)
 
@@ -53,7 +54,7 @@ class ImageCell:
         result = self.session.run([output_name], {input_name: self.image})
 
         output = torch.from_numpy(np.array(result[0]))
-        self.out = non_max_suppression(output, conf_thres=0.5, iou_thres=0.5)
+        self.out = non_max_suppression(output, conf_thresh , iou_thres=0.5)
         print("Detección terminada")
 
         return self.out
