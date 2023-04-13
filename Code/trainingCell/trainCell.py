@@ -107,7 +107,7 @@ valLabelPath = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\t
 path_weight = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\trainingCell\\best.pt'
 
 # Nombre para guardar el modelo completo entrenado
-path_save = "yolov5s_cells100epochs15batch.onnx"
+path_save = "yolov5s_cells100epochs4batch.onnx"
 
 # Directorio donde se encuentran las imágenes y las anotaciones mezcladas
 path_dataset = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\trainingCell\\data\\'
