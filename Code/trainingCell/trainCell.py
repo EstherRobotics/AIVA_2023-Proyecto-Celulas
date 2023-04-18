@@ -117,7 +117,7 @@ trainCell1 = trainCell(path_dataset)
 trainCell1.loadDataset()
 trainCell1.splitDataset()
 trainCell1.saveSplittedDataset(trainImgPath, trainLabelPath, valImgPath, valLabelPath)
-trainCell1.trainModel(batch=16,epochs=100)
+trainCell1.trainModel(batch=4,epochs=50)
 #trainCell1.saveModel(path_weight, path_save)
 
 
