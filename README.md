@@ -111,7 +111,15 @@ Para poder ejecutar la aplicación con Docker, es necesario construir o descarga
 <code>docker build –t cellprojectdocker .</code>
 
 3. Instalación y configuración de VcXsrv para poder visualizar la interfaz gráfica, tal como se ve en las siguientes imágenes:
-IMÁGENES
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/93343403/232859367-5b5bb89b-1a55-4321-8255-f0cb9ff2541f.png" width="30%" height="30%">
+
+<img src="https://user-images.githubusercontent.com/93343403/232859384-94a7077c-f626-4ded-8b83-4b7b90568385.png" width="30%" height="30%">
+
+<img src="https://user-images.githubusercontent.com/93343403/232859391-5cfda00e-b2e4-4079-bee5-d393322f7775.png" width="30%" height="30%">
+</p>
+
 
 Esta aplicación se ejecuta en segundo plano y las pantallas generadas por *cellprojectdocker* serán derivadas a dicho servidor. 
 
@@ -123,9 +131,9 @@ Si se desea descargar la imagen de Docker directamente, se puede ir a la direcci
 
 <code>docker pull esthervera/cellprojectdocker</code>  
 
-O la versión según la etiqueta correspondiente: 
+O la versión según la etiqueta TAG correspondiente: 
 
-<code>docker pull esthervera/cellprojectdocker:<TAG></code>  
+<code>docker pull esthervera/cellprojectdocker:TAG</code>  
 
 Después, ya se puede ejecutar la aplicación con los pasos 3 y 4 anteriores. 
 
@@ -133,19 +141,19 @@ Después, ya se puede ejecutar la aplicación con los pasos 3 y 4 anteriores.
 Al ejecutar **CellCountApp**, ya sea desde el directorio **App** o utilizando el contenedor de Docker, la interfaz mostrada es la siguiente:
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/93343403/232857367-1009b9a0-a231-42c1-8e9f-3c2bbd58dc42.png" width="40%" height="40%">
+<img src="https://user-images.githubusercontent.com/93343403/232857367-1009b9a0-a231-42c1-8e9f-3c2bbd58dc42.png" width="60%" height="60%">
 </p>
 
 Donde se puede ver que pulsando el botón *Cargar imagen* y seleccionando una imagen del directorio */images* del contenedor, se puede visualizar la detección de células: 
 
- <p align="center">
-<img src="https://user-images.githubusercontent.com/93343403/232857613-7dd9b847-33b1-4b18-b0a0-6845f4134a73.png" width="40%" height="40%">
+<p align="center">
+<img src="https://user-images.githubusercontent.com/93343403/232857613-7dd9b847-33b1-4b18-b0a0-6845f4134a73.png" width="60%" height="60%">
 </p>
 
 Se observa que la aplicación ofrece la imagen procesada con los bonuding boxes y el nivel de confianza para cada detección. Este último parámetro puede modificarse para poder ver más o menos predicciones: 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/93343403/232857674-495cc163-c77d-406c-a1bf-5163310eb8bd.png" width="40%" height="40%">
+<img src="https://user-images.githubusercontent.com/93343403/232857674-495cc163-c77d-406c-a1bf-5163310eb8bd.png" width="60%" height="60%">
 </p>
 
 Pulsando el botón *Cerrar imagen*, la interfaz vuelve a su estado inicial, pudiendo comenzar un nuevo procesamiento. 
