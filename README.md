@@ -103,7 +103,7 @@ Para poder probar el funcionamiento de los tests, dentro de la carpeta **Tests**
 
 
 ## Instalación de la aplicación con Docker 
-Para poder ejecutar la aplicación con Docker, es necesario construir o descargar la imagen *cellprojectdocker*. Si se desea constuir la imagen desde el principio utilizando este respositorio de GitHub, el procedimiento es el siguiente: 
+Para poder ejecutar la aplicación con Docker, es necesario construir o descargar la imagen **cellprojectdocker**. Si se desea constuir la imagen desde el principio utilizando este respositorio de GitHub, el procedimiento es el siguiente: 
 
 1. Clonación de este respositorio e instalación de la aplicación Docker. 
 2. Dentro del directorio **Docker** del respositorio, ejecución del comando: 
@@ -138,7 +138,7 @@ O la versión según la etiqueta TAG correspondiente:
 Después, ya se puede ejecutar la aplicación con los pasos 3 y 4 anteriores. 
 
 ## Interfaz gráfica CellCountApp
-Al ejecutar **CellCountApp**, ya sea desde el directorio **App** o utilizando el contenedor de Docker, la interfaz mostrada es la siguiente:
+Al ejecutar **CellCountApp**, ya sea desde el directorio **App** o utilizando la imagen **cellprojectdocker**, la interfaz mostrada es la siguiente:
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/93343403/232857367-1009b9a0-a231-42c1-8e9f-3c2bbd58dc42.png" width="60%" height="60%">
