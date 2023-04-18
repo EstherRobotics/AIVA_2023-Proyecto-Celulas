@@ -122,7 +122,8 @@ Para poder ejecutar la aplicación con Docker, es necesario construir o descarga
 
 <code>docker build –t cellprojectdocker .</code>
 
-3. Instalación y configuración de VcXsrv para poder visualizar la interfaz gráfica, tal como se ve en las siguientes imágenes. 
+3. Instalación y configuración de VcXsrv para poder visualizar la interfaz gráfica, tal como se ve en las siguientes imágenes:
+IMÁGENES
 
 Esta aplicación se ejecuta en segundo plano y las pantallas generadas por *cellprojectdocker* serán derivadas a dicho servidor. 
 
@@ -143,16 +144,21 @@ Después, ya se puede ejecutar la aplicación con los pasos 3 y 4 anteriores.
 ## Interfaz gráfica CellCountApp
 Al ejecutar **CellCountApp**, ya sea desde el directorio **App** o utilizando el contenedor de Docker, la interfaz mostrada es la siguiente:
 
- 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/93343403/232857367-1009b9a0-a231-42c1-8e9f-3c2bbd58dc42.png" width="40%" height="40%">
+</p>
 
 Donde se puede ver que pulsando el botón *Cargar imagen* y seleccionando una imagen del directorio */images* del contenedor, se puede visualizar la detección de células: 
 
- 
+ <p align="center">
+<img src="https://user-images.githubusercontent.com/93343403/232857613-7dd9b847-33b1-4b18-b0a0-6845f4134a73.png" width="40%" height="40%">
+</p>
 
 Se observa que la aplicación ofrece la imagen procesada con los bonuding boxes y el nivel de confianza para cada detección. Este último parámetro puede modificarse para poder ver más o menos predicciones: 
 
-
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/93343403/232857674-495cc163-c77d-406c-a1bf-5163310eb8bd.png" width="40%" height="40%">
+</p>
 
 
 
