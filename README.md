@@ -96,7 +96,7 @@ Finalmente, ya se puede ejecutar la función *trainModel()* de *trainCell.py* qu
 
 
 ### Ejecución de la aplicación en el sistema local 
-La ejecución de **CellCountApp** es realmente sencilla. Dentro del entorno virtual, se deberá ejecutar el código *CellCountApp.py* contenido en **App** que abrirá una ventana de **Tkinker** donde aparecen los botones *Cargar imagen* y *Cerrar imagen* como en la siguiente imagen:
+La ejecución de **CellCountApp** en el sistema local es realmente sencilla. Dentro del entorno virtual, se deberá ejecutar el código *CellCountApp.py* contenido en **App** que abrirá una ventana de **Tkinker** donde aparecen los botones *Cargar imagen* y *Cerrar imagen* como en la siguiente imagen:
 
 
 <p align="center">
@@ -115,9 +115,47 @@ Para poder probar el funcionamiento de los tests, dentro de la carpeta **Tests**
 
 
 ## Instalación de la aplicación con Docker 
+Para poder ejecutar la aplicación con Docker, es necesario construir o descargar la imagen *cellprojectdocker*. Si se desea constuir la imagen desde el principio utilizando este respositorio de GitHub, el procedimiento es el siguiente: 
+
+1. Clonación de este respositorio e instalación de la aplicación Docker. 
+2. Dentro del directorio **Docker** del respositorio, ejecución del comando: 
+
+<code>docker build –t cellprojectdocker .</code>
+
+3. Instalación y configuración de VcXsrv para poder visualizar la interfaz gráfica, tal como se ve en las siguientes imágenes. 
+
+Esta aplicación se ejecuta en segundo plano y las pantallas generadas por *cellprojectdocker* serán derivadas a dicho servidor. 
+
+4. Ejecución del contenedor con el comando: 
+
+<code>docker run -it -e DISPLAY=host.docker.internal:0 cellprojectdocker</code>
+
+Si se desea descargar la imagen de Docker directamente, se puede ir a la dirección de DockerHub: https://hub.docker.com/r/esthervera/cellprojectdocker y descargar la última versión con: 
+
+<code>docker pull esthervera/cellprojectdocker</code>  
+
+O la versión según la etiqueta correspondiente: 
+
+<code>docker pull esthervera/cellprojectdocker:<TAG></code>  
+
+Después, ya se puede ejecutar la aplicación con los pasos 3 y 4 anteriores. 
+
+## Interfaz gráfica CellCountApp
+Al ejecutar **CellCountApp**, ya sea desde el directorio **App** o utilizando el contenedor de Docker, la interfaz mostrada es la siguiente:
+
+ 
+
+Donde se puede ver que pulsando el botón *Cargar imagen* y seleccionando una imagen del directorio */images* del contenedor, se puede visualizar la detección de células: 
+
+ 
+
+Se observa que la aplicación ofrece la imagen procesada con los bonuding boxes y el nivel de confianza para cada detección. Este último parámetro puede modificarse para poder ver más o menos predicciones: 
 
 
-## Interfaz gráfica 
+
+
+
+
 
 
 
