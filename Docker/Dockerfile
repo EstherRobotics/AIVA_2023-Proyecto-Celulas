@@ -2,7 +2,7 @@ FROM python:3.7.12
 WORKDIR /app
 COPY /utils /app/utils
 COPY /images /app/images
-COPY CellCountApp.py imageCell.py yolov5s_cells1.onnx requirements.txt /app/
+COPY CellCountApp.py imageCell.py yolov5s_cells.onnx requirements.txt /app/
 RUN python -m pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install torchvision

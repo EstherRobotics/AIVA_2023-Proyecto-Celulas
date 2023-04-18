@@ -107,18 +107,18 @@ valLabelPath = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\t
 path_weight = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\trainingCell\\best.pt'
 
 # Nombre para guardar el modelo completo entrenado
-path_save = "yolov5s_cells100epochs4batch.onnx"
+path_save = "yolov5s_cells.onnx"
 
 # Directorio donde se encuentran las imágenes y las anotaciones mezcladas
 path_dataset = 'C:\\Users\\Usuario\\Desktop\\AIVA_2023-Proyecto-Celulas\\Code\\trainingCell\\data\\'
 
 # Crear instancia de trainCell
 trainCell1 = trainCell(path_dataset)
-trainCell1.loadDataset()
+'''trainCell1.loadDataset()
 trainCell1.splitDataset()
 trainCell1.saveSplittedDataset(trainImgPath, trainLabelPath, valImgPath, valLabelPath)
-trainCell1.trainModel(batch=4,epochs=50)
-#trainCell1.saveModel(path_weight, path_save)
+trainCell1.trainModel(batch=4,epochs=50)'''
+trainCell1.saveModel(path_weight, path_save)
 
 
 

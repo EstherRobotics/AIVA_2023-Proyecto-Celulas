@@ -12,7 +12,7 @@ class testCells(unittest.TestCase):
         self.image = 'images_test/BloodImage_00132.jpg'
         #self.image = 'images_test/BloodImage_00225.jpg'
 
-        self.cell1 = ImageCell(self.image, 'yolov5s_cells1.onnx')
+        self.cell1 = ImageCell(self.image, 'yolov5s_cells.onnx')
 
     def test_loadImage(self):
         """Carga la imagen y comprueba que su tipo es correcto y que no es None"""

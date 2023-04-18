@@ -92,7 +92,7 @@ class CellCountApp:
             conf_thresh = self.confidenceScale.get()
 
             # Detección de células en la imagen con la clase ImageCell
-            self.detectCells = ImageCell(path_image,'yolov5s_cells1.onnx')
+            self.detectCells = ImageCell(path_image,'yolov5s_cells.onnx')
             self.detectCells.loadImage()
             self.detectCells.prepareImage()
             self.detectCells.loadModel()

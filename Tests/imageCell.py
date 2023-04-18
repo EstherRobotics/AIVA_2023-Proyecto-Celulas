@@ -95,7 +95,7 @@ class ImageCell:
 # Ejemplo de prueba
 '''# Directorios para cargar imagen y modelo yolo
 path_image = 'a.jpg'
-path_model = 'yolov5s_cells1.onnx'
+path_model = 'yolov5s_cells.onnx'
 
 # Crear instancia de ImageCell
 imgCell = ImageCell(path_image, path_model)
