@@ -10,15 +10,17 @@
 
 4. [Tutorial de ejecución](#tutorial-de-ejecución)
 
-5. [Conclusión](#conclusión)
+5. [Instalación de la aplicación con Docker](#instalación-de-la-aplicación-con-docker)
+
+6. [Interfaz gráfica CellCountApp](#interfaz-gráfica-cellcountapp)
+
 
 ## Introducción
 
-Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para la detección y conteo de células en imágenes de microscopía. En este respositorio están todos los documentos asociados al proyecto sobre los requerimientos funcionales y de diseño del sistema. Asimismo, se puede encontrar tanto el Mock-Up, como el dataset utilizado y los códigos asociados para el entrenamiento de la red neuronal de detección. En el directorio de **App** se puede ver una primera versión de la interfaz de la aplicación, capaz de obtener la localización y conteo de algunas células al cargar una imagen mediante *bounding boxes*. 
-
+Este proyecto se basa en el desarrollo de la aplicación **CellCountApp** para la detección y conteo de células en imágenes de microscopía. En este respositorio están todos los documentos asociados al proyecto sobre los requerimientos funcionales y el sistema. Asimismo, se puede encontrar tanto el Mock-Up, como el dataset utilizado y los códigos asociados para el entrenamiento de la red neuronal de detección. En el directorio de **App** se encuentra la versión final de la aplicación que también puede ejecutarse con el contenedor *cellprojectdocker* como se explicará en las siguientes secciones. 
 
 ## Estructura del proyecto
-La estructura actual se divide en varias carpetas, donde se han destacado sus directorios principales: 
+La estructura del respositorio se divide en varias carpetas, donde se han destacado sus directorios principales: 
 
 * Code
   * trainingCell
@@ -29,8 +31,11 @@ La estructura actual se divide en varias carpetas, donde se han destacado sus di
   * annotations_YOLO
   * xml_preprocessing
 * Diagrams 
+* Docker
+  * Dockerfile 
 * Docs
   * DSR_Células
+  * Documento_sistema_funcional_células
   * Documento_diseño_células 
   * Presupuesto
 * Mock-up
@@ -41,7 +46,7 @@ La estructura actual se divide en varias carpetas, donde se han destacado sus di
   * CellCountApp
   * imageCell  
 
-En el directorio de **Code** se encuentra *trainingCell*, que incluye los archivos necesarios utilizados en el entrenamiento de la red neuronal para la detección de células. En la carpeta de **Dataset**, están contenidas las imágenes de células y las anotaciones de sus posiciones proporcionadas inicialmente. El procesamiento de este **Dataset**, fue realizado en **Dataset_preprocessing**, donde se extrayeron las anotaciones de las imágenes en el formato requerido por YOLO. Por otra parte, en **Diagrams**, se pueden ver los diagramas de clases, secuencia y actividades. En la sección de **Docs** se guarda el documento DSR, el de presupuesto y el nuevo documento de diseño. Dentro del **Mock-up**, está un esquema general de programación de la aplicación con los test unitarios desarrollados inicialmente. Los nuevos tests unitarios están dentro de **Tests**, en el archivo *tests.py*, y pueden ejecutarse con run_tests.py para comprobar su funcionamiento. Finalmente, en el directorio **App**, se puede ver el código de la aplicación contenido en *CellCountApp.py*, que utiliza funciones de *imageCell.py* para el procesamiento. 
+En el directorio de **Code** se encuentra *trainingCell*, que incluye los archivos necesarios utilizados en el entrenamiento de la red neuronal para la detección de células. En la carpeta de **Dataset**, están contenidas las imágenes de células y las anotaciones de sus posiciones proporcionadas inicialmente. El procesamiento de este **Dataset**, fue realizado en **Dataset_preprocessing**, donde se extrayeron las anotaciones de las imágenes en el formato requerido por YOLO. Por otra parte, en **Diagrams**, se pueden ver los diagramas de clases, secuencia, actividades y despliegue. Dentro de **Docker**, está el *Dockerfile* junto con los archivos necesarios para poder crear la imagen *cellprojectdocker*. En la sección de **Docs** se guarda el documento DSR, el de presupuesto y el nuevo documento de diseño. Dentro del **Mock-up**, está un esquema general de programación de la aplicación con los test unitarios desarrollados inicialmente. Los nuevos tests unitarios están dentro de **Tests**, en el archivo *tests.py*, y pueden ejecutarse con run_tests.py para comprobar su funcionamiento. Finalmente, en el directorio **App**, se puede ver el código de la aplicación contenido en *CellCountApp.py*, que utiliza funciones de *imageCell.py* para el procesamiento. 
 
 
 ## Descripción detallada
@@ -61,9 +66,9 @@ Si se procesa la información contenida en **Dataset/Annotations** sobre la imag
 
 Se puede observar que hay varios tipos de células y que además estas pueden encontrarse a lo largo de toda la imagen en orientaciones distintas. Se debe tener en cuenta que pueden ocurrir superposiciones entre las células por lo que este será un tema clave a la hora de realizar la detección. 
 
-Para el desarrollo del proyecto se entrenará la red neuronal YOLOv5 con distintos parámetros, eligiendo aquella que ofrezca mejores resultados de detección. En la entrega actual, se ha entrenado una versión básica de esta red y el modelo completo se encuentra guardado en el archivo *yolov5s_cells1.onnx*. Siguiendo el tutorial descrito abajo, se puede ejecutar la aplicación y ver el procesamiento de forma visual, así como el número total de células detectadas. 
+Para el desarrollo del proyecto se entrenará la red neuronal YOLOv5 con distintos parámetros, eligiendo aquella que ofrezca mejores resultados de detección. En la entrega actual, se ha entrenado una versión básica de esta red y el modelo completo se encuentra guardado en el archivo *yolov5s_cells.onnx*. Siguiendo el tutorial descrito abajo, se puede ejecutar la aplicación y ver el procesamiento de forma visual, así como el número total de células detectadas. 
 
-Por otra parte, como ya se ha visto en la estructura del proyecto, se han desarrollado los Diagramas UML de clases, secuencias y actividad, que muestran un esquema sobre el funcionamiento de las clases programadas. Estos diagramas, así como los tests unitarios realizados, han sido descritos con más detalle en el documento de diseño. 
+Como ya se ha visto en la estructura del proyecto, se han desarrollado los Diagramas UML de clases, secuencias y actividad, que muestran un esquema sobre el funcionamiento de las clases programadas. Estos diagramas, así como los tests unitarios realizados, han sido descritos con más detalle en el documento de diseño. Por otra parte, se encuentra el documento del sistema funcional, que ofrece una descripción más detallada de la versión final de la aplicación, su instalación y el diagrama de despliegue y secuencias. 
 
 
 ## Tutorial de ejecución
@@ -74,7 +79,7 @@ Para poder utilizar cualquiera de los códigos, se debe hacer una instalación p
 <code>conda install --yes --file requirements.txt</code>
 
 
-### Restructuración del dataset 
+### Reestructuración del dataset 
 Para poder entrenar la red neuronal, primero se necesita configurar las carpetas y anotaciones de las imágenes de la manera esperada por YOLO. Esto ya ha sido realizado con el código contenido en **Dataset preprocessing**. Este código obtiene los XML que definen los *bounding boxes* de cada imagen reescalada y normalizada para poder utilizarlos en el entrenamiento de YOLOv5 y los guarda en la carpeta *annotations_YOLO*. 
 
 A continuación, se han copiado los archivos de esta carpeta a *Code/trainingCell/data*, así como las imágenes correspondientes a los TXT. Ejecutando las funciones de *trainCell.py*: *loadDataset()*, *splitDataset()* y *saveSplittedDataset()*, se reordenan las imágenes y anotaciones dentro de la carpeta *Code/trainingCell/dataset/*, en carpetas de entrenamiento y validación. En el repositorio actual, este desarrollo ya ha sido realizado, por lo que no sería necesario volver a ejecutar este procedimiento. 
@@ -90,7 +95,7 @@ Ya con el dataset organizado dentro de la carpeta *trainingCell* según el paso 
 Finalmente, ya se puede ejecutar la función *trainModel()* de *trainCell.py* que ejecuta el entrenamiento de YOLOv5 con las imágenes y anotaciones de las células. Se pueden modificar el tamaño de los *batches* y las épocas en esta función. Al final de la ejecución, se obtendrá el peso de la red entrenada dentro de la carpeta de *yolov5/runs/train/expX/weights*. Para guardar este peso como una red, se selecciona el archivo *best.pt* de la carpeta anterior y dentro del directorio *trainingCells*, se ejecuta la función *saveModel()* con las rutas correspondientes actualizadas (*path_save* y *path_weight*) para guardar la red neuronal completa.  
 
 
-### Ejecución de la aplicación
+### Ejecución de la aplicación en el sistema local 
 La ejecución de **CellCountApp** es realmente sencilla. Dentro del entorno virtual, se deberá ejecutar el código *CellCountApp.py* contenido en **App** que abrirá una ventana de **Tkinker** donde aparecen los botones *Cargar imagen* y *Cerrar imagen* como en la siguiente imagen:
 
 
@@ -109,6 +114,13 @@ Al pulsar en *Cargar imagen*, se puede elegir cualquier imagen por ejemplo de la
 Para poder probar el funcionamiento de los tests, dentro de la carpeta **Tests** se debe ejecutar el código *run_tests.py*. En la línea de comandos se mostrará información sobre si los tests se han pasado con éxito o ha habido algún fallo en la ejecución. 
 
 
-# Conclusión 
+## Instalación de la aplicación con Docker 
 
-Cabe decir que este repositorio se encuentra bajo desarrollo actualmente, por lo que se mejorará la versión de la aplicación y el funcionamiento de la detección de células en posteriores versiones, así como los documentos asociados. 
+
+## Interfaz gráfica 
+
+
+
+
+
+
