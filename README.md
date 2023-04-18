@@ -96,19 +96,7 @@ Finalmente, ya se puede ejecutar la función *trainModel()* de *trainCell.py* qu
 
 
 ### Ejecución de la aplicación en el sistema local 
-La ejecución de **CellCountApp** en el sistema local es realmente sencilla. Dentro del entorno virtual, se deberá ejecutar el código *CellCountApp.py* contenido en **App** que abrirá una ventana de **Tkinker** donde aparecen los botones *Cargar imagen* y *Cerrar imagen* como en la siguiente imagen:
-
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/93343403/228200416-95f98ff9-4917-4374-82d0-20fcbd0d2b13.png" width="40%" height="40%">
-</p>
-
-
-Al pulsar en *Cargar imagen*, se puede elegir cualquier imagen por ejemplo de la carpeta de validación contenida en *Code/trainingCell/dataset/images/val* y se mostrarán tanto la imagen sin procesar como la imagen con los *bounding boxes* predichos por la red neuronal *yolov5s_cells1.onnx*. Después, se puede pulsar en el botón de cerrar para cargar una nueva imagen. 
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/93343403/228200340-0c8efc8c-9271-427e-a6b6-9ca114077f1a.png" width="40%" height="40%">
-</p>
+La ejecución de **CellCountApp** en el sistema local es realmente sencilla. Dentro del entorno virtual ya construido con el archivo *requirements.txt*, se deberá ejecutar el código *CellCountApp.py* contenido en **App** que abrirá una ventana de **Tkinker**, pudiendo visualizar la interfaz gráfica. Pulsando en el botón *Cargar imagen* y seleccionando la imagen para la predicción de la carpeta *Code/trainingCell/dataset/images/val*, se podrá visualizar la imagen sin procesar y la imagen con las detecciones ya realizadas mediante los *bounding boxes*, el número total de detecciones y el nivel de confianza. Después, se puede pulsar en el botón de *Cerrar imagen* para cargar una nueva. 
 
 ### Ejecución de los tests unitarios
 Para poder probar el funcionamiento de los tests, dentro de la carpeta **Tests** se debe ejecutar el código *run_tests.py*. En la línea de comandos se mostrará información sobre si los tests se han pasado con éxito o ha habido algún fallo en la ejecución. 
@@ -160,7 +148,7 @@ Se observa que la aplicación ofrece la imagen procesada con los bonuding boxes 
 <img src="https://user-images.githubusercontent.com/93343403/232857674-495cc163-c77d-406c-a1bf-5163310eb8bd.png" width="40%" height="40%">
 </p>
 
-
+Pulsando el botón *Cerrar imagen*, la interfaz vuelve a su estado inicial, pudiendo comenzar un nuevo procesamiento. 
 
 
 
