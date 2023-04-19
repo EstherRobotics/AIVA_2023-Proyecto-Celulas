@@ -35,7 +35,6 @@ class CellCountApp:
         self.confidenceScale.set(0.35) # Valor por defecto de 0.35 para el nivel de confianza al abrir la interfaz
         self.confidenceScale.pack()
         self.confThresh = self.confidenceScale.get()
-        self.confThresh_prev = self.confThresh
 
         # Se agrega un botón para cargar la imagen
         self.loadButton = tk.Button(self.window, text="Cargar imagen", command=self.selectAndProcessImage, width=20, height=2)
@@ -58,19 +57,19 @@ class CellCountApp:
         self.count.pack(pady=20, fill=tk.X)
 
         # Creación de un contenedor para mostrar dentro la imagen cargada por el usuario
-        self.ImageOriginalContainter = tk.LabelFrame(self.window, text="Imagen elegida por el usuario", width=200, height=200)
-        self.ImageOriginalContainter.place(x=250, y=300) #Ajustamos donde debe estar ese contenedor en la interfaz
+        self.ImageOriginalContainer = tk.LabelFrame(self.window, text="Imagen elegida por el usuario", width=200, height=200)
+        self.ImageOriginalContainer.place(x=250, y=300) #Ajustamos donde debe estar ese contenedor en la interfaz
 
         # Creación de un contenedor para mostrar dentro la imagen tras la detección
-        self.ImagePredContainter = tk.LabelFrame(self.window, text="Imagen tras detección", width=200, height=200)
-        self.ImagePredContainter.place(x=800, y=300)
+        self.ImagePredContainer = tk.LabelFrame(self.window, text="Imagen tras detección", width=200, height=200)
+        self.ImagePredContainer.place(x=800, y=300)
 
         # Agrega un panel para mostrar la imagen original y que se muestre dentro del Contenedor creado
-        self.panelImageOrig = tk.Label(self.ImageOriginalContainter)
+        self.panelImageOrig = tk.Label(self.ImageOriginalContainer)
         self.panelImageOrig.place(x=250, y=300)
 
         # Agrega un panel para mostrar la imagen predicha y que se muestre dentro del contenedor creado
-        self.panelImagePred = tk.Label(self.ImagePredContainter)
+        self.panelImagePred = tk.Label(self.ImagePredContainer)
         self.panelImagePred.place(x=800, y=300)
 
         # Inicia el bucle principal de la aplicación
@@ -149,7 +148,7 @@ class CellCountApp:
 
     def saveResults(self):
         """Guarda la imagen procesada y un fichero de texto con la cantidad de células detectadas"""
-
+        print(type(self.img_pred))
         # Crear diretorio para guardar la imagen
         path = os.getcwd()
         dir_save = path+'\images_detected\\'
