@@ -1,5 +1,9 @@
 # AIVA_2023-Proyecto-Celulas
 
+Desarrolladoras (*VisionAll*): 
+  - Vanesa Gómez Martínez
+  - Esther Vera Moreno
+
 ## Índice
 
 1. [Introducción](#introducción)
@@ -66,9 +70,9 @@ Si se procesa la información contenida en **Dataset/Annotations** sobre la imag
 
 Se puede observar que hay varios tipos de células y que además estas pueden encontrarse a lo largo de toda la imagen en orientaciones distintas. Se debe tener en cuenta que pueden ocurrir superposiciones entre las células por lo que este será un tema clave a la hora de realizar la detección. 
 
-Para el desarrollo del proyecto se entrenará la red neuronal YOLOv5 con distintos parámetros, eligiendo aquella que ofrezca mejores resultados de detección. En la entrega actual, se ha entrenado una versión básica de esta red y el modelo completo se encuentra guardado en el archivo *yolov5s_cells.onnx*. Siguiendo el tutorial descrito abajo, se puede ejecutar la aplicación y ver el procesamiento de forma visual, así como el número total de células detectadas. 
+Para el desarrollo del proyecto se ha entrenado la red neuronal YOLOv5 con distintos parámetros, eligiendo aquella que ofrecía mejores resultados de detección. En la entrega final, se ha entrenado esta red con 50 épocas y *batches* de tamaño 4, guardando el modelo en el archivo *yolov5s_cells.onnx*. Siguiendo el tutorial descrito abajo, se puede ejecutar la aplicación y ver el procesamiento de forma visual, así como el número total de células detectadas y guardar los resultados. 
 
-Como ya se ha visto en la estructura del proyecto, se han desarrollado los Diagramas UML de clases, secuencias y actividad, que muestran un esquema sobre el funcionamiento de las clases programadas. Estos diagramas, así como los tests unitarios realizados, han sido descritos con más detalle en el documento de diseño. Por otra parte, se encuentra el documento del sistema funcional, que ofrece una descripción más detallada de la versión final de la aplicación, su instalación y el diagrama de despliegue y secuencias. 
+Como ya se ha visto en la estructura del proyecto, se han desarrollado los Diagramas UML de clases, secuencias, actividad y despliegue, que muestran un esquema sobre el funcionamiento de las clases programadas y la aplicación. Algunos de estos diagramas, así como los tests unitarios realizados, fueron descritos en el documento de diseño. Por otra parte, se encuentra el documento del sistema funcional, que ofrece una descripción más detallada de la versión final de la aplicación, su instalación y el diagrama de despliegue y secuencia. 
 
 
 ## Tutorial de ejecución
@@ -96,7 +100,7 @@ Finalmente, ya se puede ejecutar la función *trainModel()* de *trainCell.py* qu
 
 
 ### Ejecución de la aplicación en el sistema local 
-La ejecución de **CellCountApp** en el sistema local es realmente sencilla. Dentro del entorno virtual ya construido con el archivo *requirements.txt*, se deberá ejecutar el código *CellCountApp.py* contenido en **App** que abrirá una ventana de **Tkinker**, pudiendo visualizar la interfaz gráfica. Pulsando en el botón *Cargar imagen* y seleccionando la imagen para la predicción de la carpeta *Code/trainingCell/dataset/images/val*, se podrá visualizar la imagen sin procesar y la imagen con las detecciones ya realizadas mediante los *bounding boxes*, el número total de detecciones y el nivel de confianza. Después, se puede pulsar en el botón de *Cerrar imagen* para cargar una nueva. 
+La ejecución de **CellCountApp** en el sistema local es realmente sencilla. Dentro del entorno virtual ya construido con el archivo *requirements.txt*, se deberá ejecutar el código *CellCountApp.py* contenido en **App** que abrirá una ventana de **Tkinker**, pudiendo visualizar la interfaz gráfica. Se puede ajustar el nivel de confianza y pulsando en el botón *Cargar imagen* y seleccionando la imagen para la predicción, se visualiza la imagen sin procesar y la imagen con las detecciones ya realizadas mediante los *bounding boxes* y el número total de detecciones. Después, se puede guardar la información obtenida con el botón *Guardar imagen*. Para reiniciar el estado de la interfaz y cargar una nueva imagen se debe pulsar previamente el botón de *Cerrar imagen*. 
 
 ### Ejecución de los tests unitarios
 Para poder probar el funcionamiento de los tests, dentro de la carpeta **Tests** se debe ejecutar el código *run_tests.py*. En la línea de comandos se mostrará información sobre si los tests se han pasado con éxito o ha habido algún fallo en la ejecución. 
@@ -141,22 +145,30 @@ Después, ya se puede ejecutar la aplicación con los pasos 3 y 4 anteriores.
 Al ejecutar **CellCountApp**, ya sea desde el directorio **App** o utilizando la imagen **cellprojectdocker**, la interfaz mostrada es la siguiente:
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/93343403/232857367-1009b9a0-a231-42c1-8e9f-3c2bbd58dc42.png" width="60%" height="60%">
+<img src="https://user-images.githubusercontent.com/93343403/233201239-ad701eab-b06b-40b5-9bb9-1c58e88e2280.PNG" width="60%" height="60%">
 </p>
 
-Donde se puede ver que pulsando el botón *Cargar imagen* y seleccionando una imagen del directorio */images* del contenedor, se puede visualizar la detección de células: 
+Donde se puede ajustar el nivel de confianza y pulsar el botón *Cargar imagen* para elegir la imagen a procesar del directorio */images* del contenedor, pudiendo obtener la detección de células: 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/93343403/232857613-7dd9b847-33b1-4b18-b0a0-6845f4134a73.png" width="60%" height="60%">
+<img src="https://user-images.githubusercontent.com/93343403/233201241-82ac49dc-39fc-4ca1-a6c5-a9e5ddebd14e.PNG" width="60%" height="60%">
 </p>
 
-Se observa que la aplicación ofrece la imagen procesada con los bonuding boxes y el nivel de confianza para cada detección. Este último parámetro puede modificarse para poder ver más o menos predicciones: 
+Se observa que la aplicación ofrece la imagen procesada con los *bounding boxes* y el nivel de confianza para cada detección. Este último parámetro puede modificarse para poder ver más o menos predicciones según la confianza (aunque se recomienda usar un valor de 0.35 según los resultados de YOLOv5): 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/93343403/232857674-495cc163-c77d-406c-a1bf-5163310eb8bd.png" width="60%" height="60%">
+<img src="https://user-images.githubusercontent.com/93343403/233201246-d6790d3b-ebff-48fd-9bf5-9d24c0dd08b6.PNG" width="60%" height="60%">
 </p>
 
-Pulsando el botón *Cerrar imagen*, la interfaz vuelve a su estado inicial, pudiendo comenzar un nuevo procesamiento. 
+Pulsando el botón *Guardar imagen*, se crea un directorio llamado */images_detected*, que guarda la imagen con la localización de las células y añade en su nombre el nivel de confianza utilizado y la cantidad de células detectadas. Asimismo, se crea el archivo *results.csv*, que también incluye esta información:
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/93343403/233201089-0a9efab2-54b1-4714-a2a4-00efdc7a3128.PNG" width="40%" height="40%">
+<img src="https://user-images.githubusercontent.com/93343403/233201224-22e9e155-cbc9-4938-b441-5405dbab0f65.PNG" width="25%" height="25%">
+</p>
+
+Sin embargo, esta funcionalidad solo funciona en el sistema local y no con el contenedor docker. 
+Para cargar una nueva imagen, se debe utilizar primero el botón *Cerrar imagen*, que provoca que la interfaz vuelva a su estado inicial, pudiendo comenzar un nuevo procesamiento. 
 
 
 
