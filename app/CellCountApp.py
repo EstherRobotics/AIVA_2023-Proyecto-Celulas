@@ -148,7 +148,6 @@ class CellCountApp:
 
     def saveResults(self):
         """Guarda la imagen procesada y un fichero de texto con la cantidad de células detectadas"""
-        print(type(self.img_pred))
         # Crear diretorio para guardar la imagen
         path = os.getcwd()
         dir_save = path+'\images_detected\\'
@@ -177,6 +176,8 @@ class CellCountApp:
         # Deshabilitar botón de guardado
         self.saveButton.config(state='disabled')
 
+        print("Imagen con predicciones guardada")
+        print("Fichero results.csv actualizado")
 
 
     def closeProcessedImage(self):
